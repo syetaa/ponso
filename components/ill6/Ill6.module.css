@@ -1,0 +1,25 @@
+.textmain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--home-background);
+    padding: 80px 90px;
+}
+.text{
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+.btns{
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+}
+.btns a{
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-color2);
+    padding: 6px 10px;
+    background: var(--text-color);
+    border-radius: 6px;
+}

@@ -1,0 +1,28 @@
+.textmain {
+  height: 80%;
+  background: var(--home-background);
+  padding: 80px 90px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.btn a {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color2);
+  padding: 6px 10px;
+  background: var(--text-color);
+  border-radius: 6px;
+  
+}
