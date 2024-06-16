@@ -1,3 +1,4 @@
+'use client'
 import Ill5 from "@/components/ill5/Ill5";
 
 

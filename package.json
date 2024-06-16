@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "canvas": "^2.11.2",
     "convas": "^2.0.0",
     "install": "^0.13.0",
     "konva": "^9.3.11",

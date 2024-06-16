@@ -1,3 +1,4 @@
+'use client'
 import Ill1 from "@/components/ill1/Ill1";
 import styles from "./page.module.css"
 
