@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Stage, Layer, Line } from 'react-konva';
 import saveValue from '@/utils/Save';
-import styles from './ill1.module.css';
+import styles from './Ill1.module.css';
 import Link from 'next/link';
 
 const PonzoIllusion = ({ sliderValue }) => {
