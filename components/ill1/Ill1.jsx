@@ -49,7 +49,7 @@ const Ill1 = () => {
             value={sliderValue}
             onChange={handleSliderChange}
           />
-          <Link href="/test2" onClick={handleSaveClick}>Сохранить</Link>
+          <Link href="/test2" onClick={handleSaveClick}>Сохранить ответ</Link>
         </div>
       </div>
     </div>

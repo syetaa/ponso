@@ -76,6 +76,10 @@ const Ill6 = () => {
     setSliderValue(parseInt(event.target.value, 10));
   };
 
+  const handleSaveClick = () => {
+    saveValue(6, 25 - sliderValue);
+  };
+
   return (
     <div className={styles.textmain}>
       <div className={styles.text}>
@@ -90,7 +94,7 @@ const Ill6 = () => {
           value={sliderValue}
           onChange={handleSliderChange}
         />
-        <Link href="/finalpage" onClick={saveValue(6, 25 - sliderValue)}>Завершить тест</Link>
+        <Link href="/finalpage" onClick={handleSaveClick}>Завершить тест</Link>
       </div>
     </div>
   );
