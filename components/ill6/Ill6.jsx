@@ -90,7 +90,7 @@ const Ill6 = () => {
           value={sliderValue}
           onChange={handleSliderChange}
         />
-        <Link href="/finalpage" onClick={saveValue(6, 25 - sliderValue)}>Сохранить ответ</Link>
+        <Link href="/finalpage" onClick={saveValue(6, 25 - sliderValue)}>Завершить тест</Link>
       </div>
     </div>
   );
