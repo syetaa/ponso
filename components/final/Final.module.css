@@ -3,7 +3,7 @@
     padding: 80px 90px;
     display: flex;
     flex-direction: column;
-    row-gap: 18px;
+    row-gap: 16px;
     font-size: 18px;
     font-weight: 500;
     color: var(--text-color);
@@ -19,4 +19,16 @@
     background: var(--text-color);
     border-radius: 6px;
     
+  }
+
+
+  @media (max-width: 540px) { 
+    .textmain{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 50px 20px;
+    }
   }

@@ -1,14 +1,14 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Stage, Layer, Circle } from 'react-konva';
 import styles from "./Ill6.module.css";
 import Link from 'next/link';
 import saveValue from '@/utils/Save';
 
 const DelboeufIllusion = ({ sliderValue }) => {
-  // Размеры внешнего круга и обводки
-  const outerCircleRadius = 200;
-  const outerCircleStrokeWidth = 10;
+  const stageRef = useRef(null);
+  const containerRef = useRef(null);
+  const [stageSize, setStageSize] = useState({ width: 800, height: 600 });
 
   // Функция для вычисления размера второго внутреннего круга на основе sliderValue
   const calculateInnerCircleRadius = () => {
@@ -25,47 +25,65 @@ const DelboeufIllusion = ({ sliderValue }) => {
   const firstInnerCircleRadius = 50; // Фиксированный размер первого внутреннего круга
   const secondInnerCircleRadius = calculateInnerCircleRadius(); // Размер второго внутреннего круга
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const containerHeight = containerRef.current.offsetHeight;
+        setStageSize({
+          width: containerWidth,
+          height: containerHeight,
+        });
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <Stage width={800} height={600}>
-      <Layer>
-        {/* Левая пара кругов */}
-        <Circle
-          x={300}
-          y={300}
-          radius={200}
-          fill="#16171A"
-          stroke="red"
-          strokeWidth={2}
-        />
-        <Circle
-          x={300}
-          y={300}
-          radius={50} // Размер первого внутреннего круга
-          fill="gray"
-          stroke="black"
-          strokeWidth={0}
-        />
+    <div className={styles.canvasContainer} ref={containerRef}>
+      <Stage width={stageSize.width} height={stageSize.height} ref={stageRef}>
+        <Layer>
+          {/* Левая пара кругов */}
+          <Circle
+            x={stageSize.width * 0.25}
+            y={stageSize.height * 0.5}
+            radius={stageSize.width * 0.25}
+            fill="#16171A"
+            stroke="red"
+            strokeWidth={2}
+          />
+          <Circle
+            x={stageSize.width * 0.25}
+            y={stageSize.height * 0.5}
+            radius={firstInnerCircleRadius}
+            fill="gray"
+            stroke="black"
+            strokeWidth={0}
+          />
 
-        {/* Правая пара кругов */}
-        <Circle
-          x={300 + 350}
-          y={300}
-          radius={100}
-          fill="#16171A"
-          stroke="red"
-          strokeWidth={2}
-        />
-        <Circle
-          x={300 + 350}
-          y={300}
-          radius={sliderValue + 25} // Размер второго внутреннего круга
-          fill="gray"
-          stroke="black"
-          strokeWidth={0}
-        />
-
-      </Layer>
-    </Stage>
+          {/* Правая пара кругов */}
+          <Circle
+            x={stageSize.width * 0.75}
+            y={stageSize.height * 0.5}
+            radius={stageSize.width * 0.125}
+            fill="#16171A"
+            stroke="red"
+            strokeWidth={2}
+          />
+          <Circle
+            x={stageSize.width * 0.75}
+            y={stageSize.height * 0.5}
+            radius={secondInnerCircleRadius}
+            fill="gray"
+            stroke="black"
+            strokeWidth={0}
+          />
+        </Layer>
+      </Stage>
+    </div>
   );
 };
 
