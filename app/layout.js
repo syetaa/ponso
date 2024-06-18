@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={montserrat.className}>
         <Header className="header"/>
            <main>{children}</main>
-        <Footer className="footer"/>
+        {/* <Footer className="footer"/> */}
       </body>
     </html>
   );

@@ -1,19 +1,28 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Stage, Layer, Circle } from 'react-konva';
 import styles from "./Ill3.module.css"
 import Link from 'next/link';
 import saveValue from '@/utils/Save';
 
-const EbbinghausIllusion = ({ sliderValue }) => {
+const EbbinghausIllusion = ({ sliderValue, stageWidth, stageHeight }) => {
   const innerCircleRadius1 = 15 + parseInt(sliderValue, 10);
   const innerCircleRadius2 = 30;
   const outerCircleRadiusSmall = 15;
   const outerCircleRadiusLarge = 40;
+  const originalWidth = 800;
+  const originalHeight = 600;
+
+  // Определяем масштаб для сохранения пропорций
+  const scale = Math.min(stageWidth / originalWidth, stageHeight / originalHeight);
+
+  // Центрируем рисунок
+  const offsetX = (stageWidth - originalWidth * scale) / 2;
+  const offsetY = (stageHeight - originalHeight * scale) / 2;
 
   return (
-    <Stage width={800} height={600}>
-      <Layer>
+    <Stage width={stageWidth} height={stageHeight} className={styles.canvas}>
+      <Layer x={offsetX} y={offsetY} scaleX={scale} scaleY={scale}>
         {/* Центральный круг первого набора */}
         <Circle x={200} y={300} radius={innerCircleRadius1} fill="orange" />
         {/* Внешние круги первого набора */}
@@ -46,6 +55,8 @@ const EbbinghausIllusion = ({ sliderValue }) => {
 
 const Ill3 = () => {
   const [sliderValue, setSliderValue] = useState(0);
+  const [stageSize, setStageSize] = useState({ width: 0, height: 0 });
+  const stageContainerRef = useRef(null);
 
   const handleSliderChange = (event) => {
     setSliderValue(event.target.value);
@@ -55,23 +66,42 @@ const Ill3 = () => {
     saveValue(3, sliderValue - 15);
   };
 
+  useEffect(() => {
+    const updateStageSize = () => {
+      if (stageContainerRef.current) {
+        setStageSize({
+          width: stageContainerRef.current.offsetWidth,
+          height: stageContainerRef.current.offsetHeight
+        });
+      }
+    };
+
+    updateStageSize();
+    window.addEventListener('resize', updateStageSize);
+
+    return () => {
+      window.removeEventListener('resize', updateStageSize);
+    };
+  }, []);
+
   return (
-    <div className={styles.textmain}>
-      <div className={styles.text}>
-        Иллюзия Эббингауза (Ebbinghaus illusion)
+    <div ref={stageContainerRef} className={styles.stageContainer}>
+      <div className={styles.textmain}>
+        <div className={styles.text}>
+          Иллюзия Эббингауза (Ebbinghaus illusion)
+        </div>
+        <EbbinghausIllusion sliderValue={sliderValue} stageWidth={stageSize.width} stageHeight={stageSize.height}/>
+        <div className={styles.btns}>
+          <input
+            type="range"
+            min="0"
+            max="50"
+            value={sliderValue}
+            onChange={handleSliderChange}
+          />
+          <Link href="/test4" onClick={handleSaveClick}>Сохранить ответ</Link>
+        </div>
       </div>
-      <EbbinghausIllusion sliderValue={sliderValue} />
-          <div className={styles.btns}>
-                <input
-                  type="range"
-                  min="0"
-                  max="50"
-                  value={sliderValue}
-                  onChange={handleSliderChange}
-                />
-                <Link href="/test4" onClick={handleSaveClick}>Сохранить ответ</Link>
-          </div>
-      
     </div>
   );
 };

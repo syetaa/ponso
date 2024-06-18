@@ -25,3 +25,32 @@
     background: var(--text-color);
     border-radius: 6px;
 }
+.stageContainer {
+    width: 100%;
+    height: 70vh; /* Adjust as needed */
+    position: relative;
+  }
+
+
+
+  @media (max-width: 730px) { 
+   
+     .textmain{
+        padding: 40px 30px;
+     }
+  }
+
+
+@media (max-width: 600px) {
+    .stageContainer {
+      height: 50vh; /* Adjust height for smaller screens */
+    }
+  
+    .textmain {
+      padding-bottom: 30px; /* Adjust bottom padding for smaller screens */
+    }
+  
+    .btns {
+      margin-top: 10px; /* Adjust top margin for buttons on smaller screens */
+    }
+  }

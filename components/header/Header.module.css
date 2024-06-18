@@ -36,3 +36,10 @@
 .btns a:hover{
     transform: scale(1.1);
 }
+
+
+@media (max-width: 540px) { 
+    .nav{
+      padding: 0 20px;
+    }
+  }

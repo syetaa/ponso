@@ -5,6 +5,7 @@
     align-items: center;
     background: var(--home-background);
     padding: 80px 90px;
+    overflow: hidden;
 }
 .text{
     font-size: 26px;
@@ -25,3 +26,7 @@
     background: var(--text-color);
     border-radius: 6px;
 }
+
+
+
+
