@@ -8,7 +8,7 @@ import saveValue from '@/utils/Save';
 const DelboeufIllusion = ({ sliderValue }) => {
   const stageRef = useRef(null);
   const containerRef = useRef(null);
-  const [stageSize, setStageSize] = useState({ width: 400, height: 300 });
+  const [stageSize, setStageSize] = useState({ width: 700, height: 500 });
 
   // Функция для вычисления размера второго внутреннего круга на основе sliderValue
   const calculateInnerCircleRadius = () => {
