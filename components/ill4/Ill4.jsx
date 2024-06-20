@@ -17,8 +17,8 @@ const VerticalHorizontalIllusion = ({ sliderValue, stageWidth, stageHeight }) =>
   const offsetY = (stageHeight - 500 * scale) / 2;
 
   return (
-    <Stage width={stageWidth} height={stageHeight} className={styles.canvas} style={{ maxWidth: '100%' }}>
-      <Layer scaleX={scale} scaleY={scale} offsetX={offsetX} offsetY={offsetY}>
+    <Stage width={stageWidth} height={stageHeight} className={styles.canvas}>
+      <Layer scaleX={scale} scaleY={scale} x={offsetX} y={offsetY}>
         {/* Вертикальная линия */}
         <Line points={[400, 200, 400, 200 + verticalLength]} stroke="red" strokeWidth={2} />
 
