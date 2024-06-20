@@ -1,4 +1,5 @@
 .textmain{
+    height: 100%;
     background: var(--home-background);
     padding: 80px 90px;
     display: flex;
@@ -24,6 +25,7 @@
 
   @media (max-width: 540px) { 
     .textmain{
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;

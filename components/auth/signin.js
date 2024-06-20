@@ -1,10 +1,10 @@
-// pages/auth/signin.js
-import { signIn, signOut, useSession } from 'next-auth/client';
+'use client'
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 export default function SignIn() {
-  const [session, loading] = useSession();
+  const { data: session } = useSession()
 
-  if (loading) return <p>Loading...</p>;
+
 
   return (
     <div>

@@ -43,14 +43,6 @@
 
 @media (max-width: 600px) {
     .stageContainer {
-      height: 50vh; /* Adjust height for smaller screens */
-    }
-  
-    .textmain {
-      padding-bottom: 30px; /* Adjust bottom padding for smaller screens */
-    }
-  
-    .btns {
-      margin-top: 10px; /* Adjust top margin for buttons on smaller screens */
+      height: 60vh; /* Adjust height for smaller screens */
     }
   }

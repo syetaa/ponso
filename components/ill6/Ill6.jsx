@@ -8,7 +8,7 @@ import saveValue from '@/utils/Save';
 const DelboeufIllusion = ({ sliderValue }) => {
   const stageRef = useRef(null);
   const containerRef = useRef(null);
-  const [stageSize, setStageSize] = useState({ width: 800, height: 600 });
+  const [stageSize, setStageSize] = useState({ width: 400, height: 300 });
 
   // Функция для вычисления размера второго внутреннего круга на основе sliderValue
   const calculateInnerCircleRadius = () => {
@@ -29,7 +29,7 @@ const DelboeufIllusion = ({ sliderValue }) => {
     const handleResize = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const containerHeight = containerRef.current.offsetHeight;
+        const containerHeight = containerWidth * 0.75; // Сохранение пропорций 4:3
         setStageSize({
           width: containerWidth,
           height: containerHeight,
@@ -50,7 +50,7 @@ const DelboeufIllusion = ({ sliderValue }) => {
           <Circle
             x={stageSize.width * 0.25}
             y={stageSize.height * 0.5}
-            radius={stageSize.width * 0.25}
+            radius={stageSize.width * 0.25} // Уменьшено для мобильных устройств
             fill="#16171A"
             stroke="red"
             strokeWidth={2}
@@ -58,7 +58,7 @@ const DelboeufIllusion = ({ sliderValue }) => {
           <Circle
             x={stageSize.width * 0.25}
             y={stageSize.height * 0.5}
-            radius={firstInnerCircleRadius}
+            radius={firstInnerCircleRadius * 0.8} // Уменьшено для мобильных устройств
             fill="gray"
             stroke="black"
             strokeWidth={0}
@@ -68,7 +68,7 @@ const DelboeufIllusion = ({ sliderValue }) => {
           <Circle
             x={stageSize.width * 0.75}
             y={stageSize.height * 0.5}
-            radius={stageSize.width * 0.125}
+            radius={stageSize.width * 0.15} // Уменьшено для мобильных устройств
             fill="#16171A"
             stroke="red"
             strokeWidth={2}
@@ -76,7 +76,7 @@ const DelboeufIllusion = ({ sliderValue }) => {
           <Circle
             x={stageSize.width * 0.75}
             y={stageSize.height * 0.5}
-            radius={secondInnerCircleRadius}
+            radius={(secondInnerCircleRadius) * 0.8} // Уменьшено для мобильных устройств
             fill="gray"
             stroke="black"
             strokeWidth={0}
@@ -95,7 +95,7 @@ const Ill6 = () => {
   };
 
   const handleSaveClick = () => {
-    saveValue(6, 25 - sliderValue);
+    saveValue(6, sliderValue * 0.8); // Сохраняем текущее значение ползунка
   };
 
   return (
